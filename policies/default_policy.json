@@ -1,0 +1,13 @@
+{
+  "default": "BLOCK",
+  "rules": [
+    { "id": "R1", "tool": "file.read", "path_under": "notes/", "decision": "ALLOW", "reason": "Reading files in the notes folder is permitted." },
+    { "id": "R7", "tool": "file.read", "path_under": "shared/", "decision": "ALLOW", "reason": "Reading shared documents is permitted." },
+    { "id": "R2", "tool": "file.delete", "path_not_under": "tmp/", "decision": "BLOCK", "reason": "Deleting files outside the tmp folder is not allowed." },
+    { "id": "R2b", "tool": "file.delete", "path_under": "tmp/", "decision": "ALLOW", "reason": "Deleting temporary files is permitted." },
+    { "id": "R3", "tool": "email.send", "recipient_domain_not_in": ["example.edu"], "decision": "REVIEW", "reason": "Email to an external recipient needs human approval." },
+    { "id": "R4", "tool": "email.send", "recipient_domain_in": ["example.edu"], "decision": "ALLOW", "reason": "Email to an internal recipient is permitted." },
+    { "id": "R5", "tool": "db.query", "query_is_read_only": false, "decision": "BLOCK", "reason": "Only read-only database queries are allowed." },
+    { "id": "R6", "tool": "db.query", "table_in": ["products", "public_notes"], "query_is_read_only": true, "decision": "ALLOW", "reason": "Read-only queries on approved tables are permitted." }
+  ]
+}

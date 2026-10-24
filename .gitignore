@@ -1,0 +1,6 @@
+sandbox/
+results/
+audit.jsonl
+__pycache__/
+.pytest_cache/
+.venv/
